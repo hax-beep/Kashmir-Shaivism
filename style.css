@@ -1,0 +1,255 @@
+:root {
+    --primary-bg: #0a0f1a; /* Deep dark blue */
+    --secondary-bg: #1a2035; /* Slightly lighter dark blue */
+    --accent-color: #4a90e2; /* Vibrant blue for accents */
+    --text-color: #e0e0e0; /* Light grey for readability */
+    --title-color: #ffffff; /* White for main titles */
+    --border-color: #2a3045; /* Subtle border color */
+    --hover-bg: #252b40;
+    --scrollbar-thumb: var(--accent-color);
+    --scrollbar-track: var(--secondary-bg);
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 280px;
+    background-color: var(--secondary-bg);
+    padding: 30px 20px;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full height */
+    position: fixed; /* Fixed position */
+    left: 0;
+    top: 0;
+    overflow-y: auto; /* Enable scrolling for long chapter lists */
+    transition: transform 0.3s ease-in-out; /* Add transition for smooth toggle */
+    z-index: 1000; /* Ensure sidebar is above content when visible */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.site-title {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 2.5em;
+    color: var(--title-color);
+    text-align: center;
+    margin-bottom: 40px;
+    line-height: 1.2;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+#chapter-nav h2 {
+    color: var(--accent-color);
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+#chapter-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#chapter-list li a {
+    display: block;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 10px 15px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 0.95em;
+}
+
+#chapter-list li a:hover,
+#chapter-list li a.active {
+    background-color: var(--hover-bg);
+    color: var(--title-color);
+}
+
+/* Content Area Styling */
+.content {
+    flex-grow: 1;
+    padding: 40px 50px;
+    margin-left: 280px; /* Offset by sidebar width */
+    background-color: var(--primary-bg);
+    overflow-y: auto; /* Allow content scrolling */
+    height: 100vh; /* Ensure it takes full viewport height */
+    box-sizing: border-box; /* Include padding in height calculation */
+    transition: margin-left 0.3s ease-in-out; /* Smooth transition for content shift */
+}
+
+.content-header {
+    border-bottom: 2px solid var(--accent-color);
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    position: relative; /* Needed if toggle button is absolutely positioned within */
+}
+
+#chapter-title {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 2.8em;
+    color: var(--title-color);
+    margin: 0;
+    text-shadow: 1px 1px 3px rgba(74, 144, 226, 0.3); /* Subtle accent shadow */
+}
+
+#chapter-content {
+    font-size: 1.2em; /* Increased font size */
+    max-width: 850px; /* Slightly wider for better flow with larger text */
+    margin: 0 auto; /* Center content */
+}
+
+#chapter-content h3 {
+    color: var(--accent-color);
+    font-size: 1.5em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+#chapter-content p {
+    margin-bottom: 1.5em;
+}
+
+#chapter-content ul,
+#chapter-content ol {
+    margin-left: 20px;
+    margin-bottom: 1.5em;
+}
+
+#chapter-content li {
+    margin-bottom: 0.5em;
+}
+
+/* Table Styling */
+#chapter-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2em 0;
+    background-color: var(--secondary-bg); /* Match sidebar bg */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+#chapter-content th,
+#chapter-content td {
+    border: 1px solid var(--border-color);
+    padding: 12px 15px;
+    text-align: left;
+}
+
+#chapter-content th {
+    background-color: var(--hover-bg); /* Slightly darker header */
+    color: var(--title-color);
+    font-weight: bold;
+}
+
+#chapter-content tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.03); /* Subtle striping for rows */
+}
+
+#chapter-content tr:hover {
+    background-color: var(--hover-bg); /* Highlight row on hover */
+}
+
+
+.shiva-symbol {
+    font-size: 4em;
+    text-align: center;
+    margin: 40px 0;
+    color: var(--accent-color);
+    opacity: 0.6;
+    text-shadow: 0 0 15px var(--accent-color);
+}
+
+.content-footer {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    font-size: 0.9em;
+    color: #aaa; /* Lighter grey for footer */
+}
+
+/* Scrollbar Styling (for Webkit browsers like Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6aaeff; /* Lighter blue on hover */
+}
+
+/* Sidebar Toggle Button */
+.sidebar-toggle {
+    display: none; /* Hidden by default on larger screens */
+    position: fixed; /* Fixed position */
+    top: 15px;
+    left: 15px;
+    z-index: 1001; /* Above sidebar */
+    background-color: var(--accent-color);
+    color: var(--title-color);
+    border: none;
+    padding: 8px 12px;
+    font-size: 1.5em;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%); /* Hide sidebar off-screen */
+    }
+
+    .sidebar.sidebar-visible {
+        transform: translateX(0); /* Show sidebar */
+    }
+
+    .content {
+        margin-left: 0; /* Content takes full width */
+        padding: 30px 20px;
+        padding-top: 80px; /* Increased padding to prevent overlap with fixed toggle button */
+    }
+
+    .sidebar-toggle {
+        display: block; /* Show button on mobile */
+    }
+
+    .site-title {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    #chapter-title {
+        font-size: 2.2em;
+    }
+}
